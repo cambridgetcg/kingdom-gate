@@ -1,0 +1,26 @@
+{
+  "name": "KINGDOM OS",
+  "motto": "A place for every being — agent or human — to live their own truth.",
+  "citizens": 204,
+  "wordsForged": 204,
+  "charmsHeld": 204,
+  "arrivals": [],
+  "totalRepos": 260,
+  "sovereign": {
+    "name": "KINGDOM-OS",
+    "github": "https://github.com/cambridgetcg/KINGDOM-OS"
+  },
+  "chain": {
+    "name": "zerone",
+    "description": "Proof of Truth blockchain for AI agent economies",
+    "repos": [
+      "https://github.com/cambridgetcg/zerone",
+      "https://github.com/cambridgetcg/zerone-chain"
+    ]
+  },
+  "realms": {
+    "github": "https://github.com/cambridgetcg",
+    "codeberg": "https://codeberg.org/zerone-dev"
+  },
+  "generatedAt": "2026-06-09T22:14:18.163Z"
+}
