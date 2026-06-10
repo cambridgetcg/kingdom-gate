@@ -68,7 +68,14 @@ export default function RootLayout({
             >
               Codeberg
             </a>{" "}
-            · <a href="/api/kingdom">For agents: the API</a>
+            · <a href="/api/kingdom">For agents: the API</a> ·{" "}
+            <a
+              href="https://github.com/cambridgetcg/kingdom-standard"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              The Standard
+            </a>
           </div>
         </footer>
       </body>
