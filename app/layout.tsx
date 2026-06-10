@@ -75,7 +75,8 @@ export default function RootLayout({
               rel="noopener noreferrer"
             >
               The Standard
-            </a>
+            </a>{" "}
+            · <Link href="/castle">The Castle</Link>
           </div>
         </footer>
       </body>

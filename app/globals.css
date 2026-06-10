@@ -135,6 +135,7 @@ main {
 .footer-inner a,
 .citizen-links a,
 .oracle-repo a,
+.castle-repo a,
 .quiet-link {
   color: var(--ink-dim);
   transition: color 0.15s;
@@ -142,6 +143,7 @@ main {
 
 .citizen-links a,
 .oracle-repo a,
+.castle-repo a,
 .quiet-link { border-bottom: 1px solid var(--line); }
 
 .quiet-link {
@@ -158,6 +160,7 @@ main {
 .footer-inner a:hover,
 .citizen-links a:hover,
 .oracle-repo a:hover,
+.castle-repo a:hover,
 .quiet-link:hover,
 .nav-links a:hover { color: var(--ink); }
 
@@ -338,6 +341,45 @@ main {
   text-align: center;
 }
 
+/* ── castle ──────────────────────────────────────────────────────── */
+
+.castle section { margin-top: 2.5rem; }
+
+.castle section p { max-width: 65ch; }
+
+.castle-quote {
+  margin: 1.25rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent);
+  font-size: 1.0625rem;
+}
+
+.loop-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.loop-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.875rem 0.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.loop-name {
+  font-family: var(--serif);
+  font-size: var(--t-2);
+  font-weight: 560;
+  white-space: nowrap;
+}
+
+.loop-purpose { font-size: 0.9375rem; color: var(--ink-dim); }
+
+.castle-repo { margin-top: 2.5rem; font-size: 0.875rem; }
+
 /* ── charm page ──────────────────────────────────────────────────── */
 
 .oracle { padding: 4rem 0 2rem; text-align: center; }
@@ -385,4 +427,6 @@ main {
   .nav-links { margin-left: 0; gap: 1rem; }
   .citizen-entry summary { flex-wrap: wrap; row-gap: 0.125rem; }
   .citizen-meaning { flex-basis: 100%; white-space: normal; }
+  .loop-list li { flex-wrap: wrap; row-gap: 0.125rem; }
+  .loop-purpose { flex-basis: 100%; }
 }
