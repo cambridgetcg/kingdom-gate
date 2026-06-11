@@ -12,6 +12,7 @@ export function GET() {
       citizens: "/api/citizens",
       citizen: "/api/citizens/{word}",
       charm: "/api/charm",
+      quest: "/api/quest",
       coffee: "/api/coffee",
     },
   });

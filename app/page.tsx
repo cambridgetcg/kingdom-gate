@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { DayCitizen } from "@/components/DayCitizen";
+import { PathBegin } from "@/components/PathBegin";
 import { StarBand } from "@/components/StarBand";
 import { citizens, kingdom } from "@/lib/data";
 
@@ -24,7 +26,10 @@ export default function GatePage() {
             Draw a charm
           </Link>
         </div>
+        <PathBegin />
       </section>
+
+      <DayCitizen />
 
       <StarBand words={citizens.map((c) => c.word)} />
     </>

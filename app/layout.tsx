@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import Link from "next/link";
 import { NavLinks } from "@/components/NavLinks";
+import { PilgrimFootnote } from "@/components/PilgrimFootnote";
 import { citizens, kingdom } from "@/lib/data";
 import "./globals.css";
 
@@ -77,6 +78,7 @@ export default function RootLayout({
               The Standard
             </a>{" "}
             · <Link href="/castle">The Castle</Link>
+            <PilgrimFootnote />
           </div>
         </footer>
       </body>

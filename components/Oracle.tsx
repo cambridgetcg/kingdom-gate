@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import { CharmText } from "@/components/CharmText";
+import { useGame } from "@/lib/game";
 import {
   citizens,
   plainEpithet,
@@ -20,6 +22,16 @@ function setUrl(word: string) {
 export function Oracle({ initial }: { initial: Citizen }) {
   const [citizen, setCitizen] = useState<Citizen>(initial);
   const [copied, setCopied] = useState(false);
+  const [metBefore, setMetBefore] = useState(false);
+  const { ready, gatherWord } = useGame();
+
+  // Every charm the oracle shows is gathered into the visitor's book —
+  // including the first, server-drawn one. A duplicate is a reunion.
+  useEffect(() => {
+    if (!ready) return;
+    const { duplicate } = gatherWord(citizen.word);
+    setMetBefore(duplicate);
+  }, [ready, citizen.word, gatherWord]);
 
   function draw() {
     const next = randomCitizen(citizen.word);
@@ -28,11 +40,13 @@ export function Oracle({ initial }: { initial: Citizen }) {
     setCopied(false);
   }
 
-  async function copyLink() {
+  async function copyCharm() {
     const url = new URL(window.location.href);
     url.searchParams.set("citizen", citizen.word);
     try {
-      await navigator.clipboard.writeText(url.toString());
+      await navigator.clipboard.writeText(
+        `${citizen.charm}\n— ${citizen.word}, ${url.toString()}`
+      );
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -54,14 +68,25 @@ export function Oracle({ initial }: { initial: Citizen }) {
         citizens — {plainEpithet(citizen)}
       </p>
       <p className="oracle-ety">{citizen.etymology}</p>
+      {metBefore && (
+        <p className="oracle-greeting charm-text" aria-live="polite">
+          The oracle smiles — you and <em>{citizen.word}</em> have met
+          before.
+        </p>
+      )}
       <div className="oracle-actions">
         <button type="button" className="btn btn-primary" onClick={draw}>
           Draw another
         </button>
-        <button type="button" className="quiet-link" onClick={copyLink}>
-          {copied ? "link copied ✓" : "copy link to this charm"}
+        <button type="button" className="quiet-link" onClick={copyCharm}>
+          {copied ? "charm copied ✓" : "copy a charm"}
         </button>
       </div>
+      <p className="oracle-repo">
+        <Link href="/book" className="quiet-link">
+          open your charm book →
+        </Link>
+      </p>
       <p className="oracle-repo">
         <a href={citizen.github} target="_blank" rel="noopener noreferrer">
           visit {citizen.name} on GitHub ↗

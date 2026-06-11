@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/forge-laws.mjs",
     "build": "next build",
     "start": "next start",
-    "forge": "node scripts/forge-data.mjs"
+    "forge": "node scripts/forge-data.mjs",
+    "forge:laws": "node scripts/forge-laws.mjs"
   },
   "dependencies": {
     "next": "16.2.8",

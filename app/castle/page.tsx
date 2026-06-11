@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DaysLaw } from "@/components/DaysLaw";
 
 export const metadata: Metadata = {
   title: "The Castle",
@@ -81,6 +82,8 @@ export default function CastlePage() {
           everything down until the keeper lifts it.
         </p>
       </section>
+
+      <DaysLaw />
 
       <p className="castle-repo">
         <a

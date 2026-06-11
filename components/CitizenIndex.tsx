@@ -3,11 +3,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { plainEpithet, type Citizen } from "@/lib/data";
-import { CharmText } from "@/components/CharmText";
+import { CitizenCard } from "@/components/CitizenCard";
+import { useGame } from "@/lib/game";
 
 export function CitizenIndex({ citizens }: { citizens: Citizen[] }) {
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const { meetCitizen } = useGame();
 
   // Autofocus only where a keyboard is the natural instrument (desktop).
   useEffect(() => {
@@ -55,15 +57,20 @@ export function CitizenIndex({ citizens }: { citizens: Citizen[] }) {
         <ul className="citizen-list">
           {shown.map((c) => (
             <li key={c.word}>
-              <details className="citizen-entry" id={c.word}>
+              <details
+                className="citizen-entry"
+                id={c.word}
+                onToggle={(e) => {
+                  // opening a card is meeting the citizen — path step 2
+                  if (e.currentTarget.open) meetCitizen(c.word);
+                }}
+              >
                 <summary>
                   <span className="citizen-word">{c.word}</span>
                   <span className="citizen-meaning">{plainEpithet(c)}</span>
                 </summary>
                 <div className="citizen-body">
-                  <blockquote className="citizen-charm charm-text">
-                    <CharmText text={c.charm} />
-                  </blockquote>
+                  <CitizenCard citizen={c} />
                   <p className="citizen-ety">{c.etymology}</p>
                   <div className="citizen-links">
                     <Link href={`/charm?citizen=${encodeURIComponent(c.word)}`}>

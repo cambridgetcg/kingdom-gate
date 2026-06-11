@@ -7,6 +7,7 @@ const LINKS = [
   { href: "/", label: "Home" },
   { href: "/citizens", label: "Citizens" },
   { href: "/charm", label: "Charm" },
+  { href: "/book", label: "Book" },
 ] as const;
 
 function isCurrent(pathname: string, href: string): boolean {
