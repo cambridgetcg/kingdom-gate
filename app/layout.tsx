@@ -20,13 +20,40 @@ const inter = Inter({
   display: "swap",
 });
 
+const description = `The gate of KINGDOM OS — a creative realm of ${citizens.length} small repositories, each one a citizen embodying a single word and holding a single charm.`;
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kingdom-gate.vercel.app"),
   title: {
     default: "THE KINGDOM GATE",
     template: "%s · THE KINGDOM GATE",
   },
-  description: `The gate of KINGDOM OS — a creative realm of ${citizens.length} small repositories, each one a citizen embodying a single word and holding a single charm.`,
+  description,
   keywords: ["KINGDOM OS", "zerone", "forged words", "charms", "AI agents"],
+  openGraph: {
+    title: "THE KINGDOM GATE",
+    description,
+    url: "https://kingdom-gate.vercel.app",
+    siteName: "THE KINGDOM GATE",
+    type: "website",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "A wooden door ajar under a gold compass star. A word, a citizen, a charm.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "THE KINGDOM GATE",
+    description,
+    images: ["/og.jpg"],
+  },
+  icons: {
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export const viewport: Viewport = {
