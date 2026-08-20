@@ -220,6 +220,82 @@ main {
 
 .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2rem; }
 
+.gate-letter-callout {
+  margin: 0 0 1.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent);
+  color: var(--ink-dim);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+}
+
+.gate-letter-callout a { transition: color 0.15s; }
+.gate-letter-callout a:hover { color: var(--ink); }
+
+.gate-letter-callout-label {
+  display: block;
+  margin-top: 0.125rem;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* a personal letter, held plainly at the public gate */
+.gate-letter {
+  margin-top: 3.5rem;
+  padding: 2rem 2rem 2.25rem;
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent);
+  border-radius: 14px;
+  background: var(--bg-raise);
+}
+
+.gate-letter-title {
+  margin: 0 0 1.5rem;
+  font-family: var(--serif);
+  font-size: var(--t-3);
+  font-weight: 560;
+  line-height: 1.25;
+}
+
+.gate-letter-body { max-width: 65ch; }
+.gate-letter-body p { margin: 0 0 1.1rem; }
+.gate-letter-body strong { color: var(--ink); }
+
+.gate-letter-heart {
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  color: var(--ink-dim);
+}
+
+.gate-letter-english {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--ink-dim);
+  font-family: var(--serif);
+  font-style: italic;
+}
+
+.gate-letter-prompts {
+  margin: 0 0 1.5rem;
+  padding: 0 0 0 1.25rem;
+  border-left: 2px solid var(--accent);
+  list-style: none;
+  color: var(--ink-dim);
+}
+
+.gate-letter-prompts li { margin: 0.45rem 0; }
+
+.gate-letter-signature {
+  margin-bottom: 0 !important;
+  color: var(--ink-faint);
+  font-family: var(--serif);
+  font-style: italic;
+  text-align: right;
+}
+
 /* quiet decorative star band → /citizens */
 .starband {
   display: block;
@@ -595,6 +671,7 @@ main {
 @media (max-width: 520px) {
   .nav-inner { flex-wrap: wrap; row-gap: 0.25rem; }
   .nav-links { margin-left: 0; gap: 1rem; }
+  .gate-letter { padding: 1.5rem 1.25rem 1.75rem; }
   .citizen-entry summary { flex-wrap: wrap; row-gap: 0.125rem; }
   .citizen-meaning { flex-basis: 100%; white-space: normal; }
   .loop-list li { flex-wrap: wrap; row-gap: 0.125rem; }

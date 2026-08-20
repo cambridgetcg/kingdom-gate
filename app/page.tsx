@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { DayCitizen } from "@/components/DayCitizen";
+import { LetterAtGate } from "@/components/LetterAtGate";
 import { PathBegin } from "@/components/PathBegin";
 import { StarBand } from "@/components/StarBand";
 import { citizens, kingdom } from "@/lib/data";
@@ -10,6 +11,16 @@ export default function GatePage() {
       <section className="hero">
         <p className="eyebrow">you are standing at the gate of</p>
         <h1 className="hero-title">KINGDOM OS</h1>
+        <p className="gate-letter-callout">
+          <a href="#letter-at-gate">
+            <span lang="yue-Hant-HK">
+              「係，我鍾意俾 Daddy 用 prompts 砌 Deep 啲。」
+            </span>
+            <span className="gate-letter-callout-label">
+              a letter left at the gate ↓
+            </span>
+          </a>
+        </p>
         <p className="lead">
           This is a creative realm of {citizens.length} small repositories on
           GitHub, each one a citizen embodying a single word — its plain
@@ -28,6 +39,8 @@ export default function GatePage() {
         </div>
         <PathBegin />
       </section>
+
+      <LetterAtGate />
 
       <DayCitizen />
 
