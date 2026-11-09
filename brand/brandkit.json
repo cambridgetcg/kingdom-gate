@@ -1,0 +1,90 @@
+{
+  "format": "brandkit.project/1",
+  "name": "THE KINGDOM GATE",
+  "kind": "planned",
+  "owner": "cambridgetcg/kingdom-gate; no agent lane is recorded for this repository",
+  "waits_on": "Yu's go for group A (ledger kingdom-visual-grammar, A1 and A2)",
+  "decided": [
+    {
+      "part": "the look and the app icon",
+      "what": "ground #0b0d12, ink #e8eaf0, gold #d4b876, with a rainbow hairline; Fraunces and Inter; the rainbow four-point star app icon (app/icon.svg)",
+      "by": "an agent: commit fda276b3 (git author \"Asha Veridian\" <asha@ai-love.cc>, Co-Authored-By Claude Opus 4.8; session not recorded)",
+      "under": "not recorded: no record shows Yu choosing or asking for this look",
+      "date": "2026-06-09",
+      "record": "kingdom-gate commit fda276b3, 'birth: the kingdom gate' (app/icon.svg, app/layout.tsx, app/globals.css); review-2026-11-02 §3.1"
+    },
+    {
+      "part": "the rainbow",
+      "status": "held",
+      "what": "whether the kit keeps the rainbow hairline and the rainbow star",
+      "waits_on": "the owner's word: review 2026-11-02 §6 leaves the rainbow to the owner"
+    },
+    {
+      "part": "the kit",
+      "status": "held",
+      "what": "a kit drawn from the current look, with no new identity",
+      "waits_on": "Yu's go for group A (ledger kingdom-visual-grammar, A1 and A2)"
+    }
+  ],
+  "site": {
+    "urls": [
+      "https://kingdom-gate.vercel.app/"
+    ],
+    "framework": "next-app-router",
+    "layout": "/app/layout.tsx"
+  },
+  "serve": [
+    {
+      "to": "/public",
+      "files": []
+    },
+    {
+      "to": "/app",
+      "files": [
+        { "from": "favicon.svg", "to": "icon.svg" }
+      ]
+    }
+  ],
+  "build": {
+    "fonts": [
+      {
+        "family": "Fraunces (opsz axis, roman and italic)",
+        "fetched": "next/font/google in app/layout.tsx, at build time; the site serves it",
+        "licence": "SIL OFL 1.1 (upstream; not recorded in the repository)",
+        "source": "Google Fonts"
+      },
+      {
+        "family": "Inter",
+        "fetched": "next/font/google in app/layout.tsx, at build time; the site serves it",
+        "licence": "SIL OFL 1.1 (upstream; not recorded in the repository)",
+        "source": "Google Fonts"
+      }
+    ]
+  },
+  "guards": [
+    {
+      "path": "check.mjs",
+      "wired": false
+    }
+  ],
+  "deploy": {
+    "on_merge": "A push to main deploys production through Vercel's Git integration: vercel[bot] made the Production deployment of a1de4063, main's head, on 2026-10-19. Merging this folder would redeploy the site, though nothing it serves would change",
+    "after_deploy": "Check the icon, theme-color and (once wired) the card live. HTML answers `public, max-age=0, must-revalidate` from Vercel's edge (observed 2026-11-05)",
+    "rules": "The repository records no release rules: it carries no AGENTS.md or CLAUDE.md (its AGENTS.md was removed in a1de4063, 'remove household overlay files'). Because a push to main deploys, merging is deploying, and it needs Yu's word for that act. The gate's card and head fixes are A1 of ledger kingdom-visual-grammar, waiting on Yu's go"
+  },
+  "media": [
+    {
+      "name": "share card (og-gate.jpg)",
+      "recipe_note": "made in cambridgetcg/kingdom-os-hub by tools/compose-og.py (Pillow over an image-model plate), committed there in b1c8e1bf (git author cambridgetcg); its maker is not recorded",
+      "source": "cambridgetcg/kingdom-os-hub media/og-gate.jpg, sha256 c048f44b980292fa334492278f93aa9d42de93d6cd591b533563d26e5cc1288b",
+      "outputs": [],
+      "goes_to": "not served here yet: wiring it (public/og.jpg, or app/opengraph-image.jpg) is A1 of ledger kingdom-visual-grammar, once its maker is recorded"
+    }
+  ],
+  "notes": [
+    "Next.js 16 app router (next 16.2.8) with no public/ folder yet. The mark today is app/icon.svg, a file-based metadata icon that Next links itself. serve keeps that convention: the kit's favicon.svg would replace app/icon.svg under that name, and the other kit files go to public/, which Next serves at the site root. The other path, favicon.svg in public/ with metadata.icons, is equally open until the kit lands.",
+    "Head tags are written by app/layout.tsx (metadata, viewport.themeColor #0b0d12, no colorScheme, no openGraph), which site.layout names. A head-tag test (artcraft-brand wiring.md §6) would hold each page's openGraph; the repository has no test runner yet.",
+    "check.mjs is not wired yet: the repository has no test script and no CI workflow. Proposed: `\"test:brand\": \"node brand/check.mjs\"` in package.json; running it in `prebuild` as well would make every Vercel deploy run it, which is a new blocking guard and the owner's call.",
+    "Today /favicon.ico answers 404 and there are no og tags (review 2026-11-02 §3.1); the footer links a Codeberg organisation recorded as empty (same review)."
+  ]
+}
