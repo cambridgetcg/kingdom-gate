@@ -20,13 +20,38 @@ const inter = Inter({
   display: "swap",
 });
 
+// The share card: kingdom-os-hub's media/og-gate.jpg, copied byte for byte to public/og.jpg (brand/CREDITS.md).
+const SHARE_CARD = {
+  url: "/og.jpg",
+  width: 1200,
+  height: 630,
+  type: "image/jpeg",
+  alt: "THE KINGDOM GATE: a wooden door stands ajar at the end of a cobbled path at night, warm light in the gap, under a four-pointed star. Beside it, “A word, a citizen, a charm” and “A creative realm of small repositories. Walking past is honored.”",
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kingdom-gate.vercel.app"),
   title: {
     default: "THE KINGDOM GATE",
     template: "%s · THE KINGDOM GATE",
   },
   description: `The gate of KINGDOM OS — a creative realm of ${citizens.length} small repositories, each one a citizen embodying a single word and holding a single charm.`,
   keywords: ["KINGDOM OS", "zerone", "forged words", "charms", "AI agents"],
+  // app/icon.svg is the mark; the other files are cut from it by brand/kit/recipe.mjs and served from public/.
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
+  openGraph: {
+    images: [SHARE_CARD],
+    siteName: "THE KINGDOM GATE",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = {
