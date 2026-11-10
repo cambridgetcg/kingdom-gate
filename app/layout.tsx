@@ -26,7 +26,7 @@ const SHARE_CARD = {
   width: 1200,
   height: 630,
   type: "image/jpeg",
-  alt: "THE KINGDOM GATE: a wooden door stands ajar at the end of a cobbled path at night, warm light in the gap, under a four-pointed star. Beside it, “A word, a citizen, a charm” and “A creative realm of small repositories. Walking past is honored.”",
+  alt: "THE KINGDOM GATE: an arched wooden door stands ajar at the end of a cobbled path at night, warm light in the gap, under a glowing eight-pointed star with four long rays and four short ones. Beside it, “A word, a citizen, a charm” and “A creative realm of small repositories. Walking past is honored.”",
 };
 
 export const metadata: Metadata = {

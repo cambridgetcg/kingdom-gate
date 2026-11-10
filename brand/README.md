@@ -57,7 +57,8 @@ Playwright dependency. The recipe never writes outside its output folder, and it
 has the 64 px tile it expects. A different Chrome may write different bytes: `check.mjs` then reports the drift.
 
 The share card is not built here. It is `media/og-gate.jpg` from the kingdom-os-hub repository, copied byte for byte
-to `public/og.jpg` (its sha256 is in `brandkit.json` under `media`).
+to `public/og.jpg` (its sha256 is in `brandkit.json` under `media`). The hub records it as text set with Pillow by its `tools/compose-og.py` over an image-model picture
+(`media/plates/gate-door.jpg`); who made the card and the picture is not recorded (`CREDITS.md`).
 
 ## How the site uses it
 
