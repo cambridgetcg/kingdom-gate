@@ -1,9 +1,8 @@
 {
   "format": "brandkit.project/1",
   "name": "THE KINGDOM GATE",
-  "kind": "planned",
+  "kind": "hand-made",
   "owner": "cambridgetcg/kingdom-gate; no agent lane is recorded for this repository",
-  "waits_on": "Yu's go for group A (ledger kingdom-visual-grammar, A1 and A2)",
   "decided": [
     {
       "part": "the look and the app icon",
@@ -16,36 +15,25 @@
     {
       "part": "the rainbow",
       "status": "held",
-      "what": "whether the kit keeps the rainbow hairline and the rainbow star",
-      "waits_on": "the owner's word: review 2026-11-02 §6 leaves the rainbow to the owner"
+      "what": "whether the gate keeps the rainbow hairline and the rainbow-gradient star; the icon files of 2026-11-10 draw the star exactly as app/icon.svg does",
+      "waits_on": "the owner's word: review 2026-11-02 §6 leaves the rainbow to the owner, and its style guide (§2, §4.1) flags a gradient sparkle as a template sign without swapping it"
     },
     {
-      "part": "the kit",
-      "status": "held",
-      "what": "a kit drawn from the current look, with no new identity",
-      "waits_on": "Yu's go for group A (ledger kingdom-visual-grammar, A1 and A2)"
+      "part": "the icon files and the share card's wiring",
+      "what": "favicon.ico, apple-touch-icon.png, icon-192.png, icon-512.png and site.webmanifest cut from app/icon.svg as it is (no new mark, no change to it), and kingdom-os-hub's og-gate.jpg served as /og.jpg",
+      "by": "an agent (Claude Code, Opus 5.5, device studio, child of session 5c4df033)",
+      "under": "Yu's go for group A of 2026-11-10 (ledger kingdom-visual-grammar, A1 and A2)",
+      "date": "2026-11-10",
+      "record": "brand/README.md; brand/kit/recipe.mjs; brand/CREDITS.md"
     }
   ],
+  "kit": "kit",
   "site": {
     "urls": [
       "https://kingdom-gate.vercel.app/"
     ],
     "framework": "next-app-router",
-    "layout": "/app/layout.tsx"
-  },
-  "serve": [
-    {
-      "to": "/public",
-      "files": []
-    },
-    {
-      "to": "/app",
-      "files": [
-        { "from": "favicon.svg", "to": "icon.svg" }
-      ]
-    }
-  ],
-  "build": {
+    "layout": "/app/layout.tsx",
     "fonts": [
       {
         "family": "Fraunces (opsz axis, roman and italic)",
@@ -61,6 +49,39 @@
       }
     ]
   },
+  "serve": [
+    {
+      "from": "kit/out",
+      "to": "/public",
+      "files": [
+        "favicon.ico",
+        "apple-touch-icon.png",
+        "icon-192.png",
+        "icon-512.png",
+        "site.webmanifest"
+      ]
+    }
+  ],
+  "build": {
+    "command": "PLAYWRIGHT=<path to playwright's index.mjs> CHROME=<path to Chrome> node brand/kit/recipe.mjs",
+    "cwd": "..",
+    "fonts": [],
+    "tools": [
+      {
+        "name": "Google Chrome",
+        "version": "157.0.8103.39",
+        "path": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+      },
+      {
+        "name": "playwright",
+        "version": "1.58.2"
+      },
+      {
+        "name": "node",
+        "version": "22.23.1"
+      }
+    ]
+  },
   "guards": [
     {
       "path": "check.mjs",
@@ -68,23 +89,28 @@
     }
   ],
   "deploy": {
-    "on_merge": "A push to main deploys production through Vercel's Git integration: vercel[bot] made the Production deployment of a1de4063, main's head, on 2026-10-19. Merging this folder would redeploy the site, though nothing it serves would change",
-    "after_deploy": "Check the icon, theme-color and (once wired) the card live. HTML answers `public, max-age=0, must-revalidate` from Vercel's edge (observed 2026-11-05)",
-    "rules": "The repository records no release rules: it carries no AGENTS.md or CLAUDE.md (its AGENTS.md was removed in a1de4063, 'remove household overlay files'). Because a push to main deploys, merging is deploying, and it needs Yu's word for that act. The gate's card and head fixes are A1 of ledger kingdom-visual-grammar, waiting on Yu's go"
+    "on_merge": "A push to main deploys production through Vercel's Git integration: vercel[bot] made the Production deployment of a1de4063 on 2026-10-19. The merge of #2 (2f4dad56, 2026-11-09 21:47 UTC) got none: GitHub shows a queued Vercel check suite for it but no Vercel commit status and no deployment, and the repository's event feed has no push event for that merge (checked 2026-11-10 from GitHub's side only). So production still served a1de4063 then",
+    "after_deploy": "Check live: /favicon.ico answers image/x-icon, /apple-touch-icon.png and /site.webmanifest answer, and og:image is https://kingdom-gate.vercel.app/og.jpg (1200x630 JPEG) on every page: python3 -B <brandkit-doorcheck>/scripts/doorcheck.py https://kingdom-gate.vercel.app/. HTML answers `public, max-age=0, must-revalidate` from Vercel's edge (observed 2026-11-05)",
+    "rules": "The repository records no release rules: it carries no AGENTS.md or CLAUDE.md (its AGENTS.md was removed in a1de4063, 'remove household overlay files'). Because a push to main deploys, merging is deploying, and it needs Yu's word for that act. Yu gave group A its go on 2026-11-10 (ledger kingdom-visual-grammar), and each merge follows an independent review"
   },
   "media": [
     {
-      "name": "share card (og-gate.jpg)",
-      "recipe_note": "made in cambridgetcg/kingdom-os-hub by tools/compose-og.py (Pillow over an image-model plate), committed there in b1c8e1bf (git author cambridgetcg); its maker is not recorded",
-      "source": "cambridgetcg/kingdom-os-hub media/og-gate.jpg, sha256 c048f44b980292fa334492278f93aa9d42de93d6cd591b533563d26e5cc1288b",
-      "outputs": [],
-      "goes_to": "not served here yet: wiring it (public/og.jpg, or app/opengraph-image.jpg) is A1 of ledger kingdom-visual-grammar, once its maker is recorded"
+      "name": "share card (og-gate.jpg, served as /og.jpg)",
+      "recipe_note": "made in cambridgetcg/kingdom-os-hub (read at 98c2c0f): text set with Pillow by tools/compose-og.py over an image-model picture, the plate media/plates/gate-door.jpg. Sources: the hub's brand/CREDITS.md (lines 15 and 32, from f8d8f2a) and the header of tools/compose-og.py (from b1c8e1b: 'Type is set here, never in the image model'); its media/README.md says 'The plates are pictures. The titles are set in tools/compose-og.py so the words stay exact' and lists og-gate.jpg as 'ready for https://kingdom-gate.vercel.app/'. Who made the card and the picture, and which model, are not recorded",
+      "source": "cambridgetcg/kingdom-os-hub media/og-gate.jpg at 98c2c0f (added in b1c8e1bf, unchanged since), sha256 c048f44b980292fa334492278f93aa9d42de93d6cd591b533563d26e5cc1288b; copied byte for byte",
+      "outputs": [
+        "/public/og.jpg"
+      ],
+      "goes_to": "og:image and twitter:image on every page, from SHARE_CARD in app/layout.tsx (no page sets its own openGraph)"
     }
   ],
   "notes": [
-    "Next.js 16 app router (next 16.2.8) with no public/ folder yet. The mark today is app/icon.svg, a file-based metadata icon that Next links itself. serve keeps that convention: the kit's favicon.svg would replace app/icon.svg under that name, and the other kit files go to public/, which Next serves at the site root. The other path, favicon.svg in public/ with metadata.icons, is equally open until the kit lands.",
-    "Head tags are written by app/layout.tsx (metadata, viewport.themeColor #0b0d12, no colorScheme, no openGraph), which site.layout names. A head-tag test (artcraft-brand wiring.md §6) would hold each page's openGraph; the repository has no test runner yet.",
+    "Next.js 16 app router (next 16.2.8). The mark is app/icon.svg, a rainbow-gradient four-point star on a #06040f tile, kept exactly as drawn on 2026-06-09. The artcraft-brand generator refuses it ('marks must use flat hex colours ... VectorCraft paints those black'), so this is a hand-made kit: brand/kit/recipe.mjs draws the SVG with Chrome at each size and writes the PNGs and the ICO itself.",
+    "The recipe writes to brand/kit/out/, which git ignores, and the copies the site serves are in public/. In a fresh checkout check.mjs warns that kit/out is missing; after running the recipe it compares public/ with kit/out byte for byte. Same Chrome, same bytes: two runs on 2026-11-10 were identical.",
+    "Head tags are written by app/layout.tsx: metadataBase https://kingdom-gate.vercel.app, metadata.icons (/favicon.ico at 32x32, /icon.svg, /apple-touch-icon.png), metadata.manifest, openGraph with SHARE_CARD, twitter summary_large_image, and viewport.themeColor #0b0d12. In next 16.2.8 metadata.icons replaces the links Next would write for app/icon.svg, so the layout names /icon.svg itself; Next still serves the file there. Each page's own title and description fill its og:title and og:description.",
+    "color-scheme comes from app/globals.css (html { color-scheme: dark; }); the layout sets no viewport.colorScheme.",
+    "The manifest's display is 'browser': the gate is a site, not an app to install. Its colours are the page ground #0b0d12. There is no maskable icon.",
     "check.mjs is not wired yet: the repository has no test script and no CI workflow. Proposed: `\"test:brand\": \"node brand/check.mjs\"` in package.json; running it in `prebuild` as well would make every Vercel deploy run it, which is a new blocking guard and the owner's call.",
-    "Today /favicon.ico answers 404 and there are no og tags (review 2026-11-02 §3.1); the footer links a Codeberg organisation recorded as empty (same review)."
+    "The footer's Codeberg link goes to codeberg.org/zerone-dev, a user account (not an organisation) with no public repositories; its former zerone-dev/zerone and zerone-dev/true-love answer 404 (checked 2026-11-10). No live Codeberg mirror was found, so the link stays until the owner chooses."
   ]
 }
